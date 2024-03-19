@@ -5,66 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Code</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+        }
+        #container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+        }
         #codeContainer {
             display: none;
             white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <button onclick="toggleCode()">Show Code</button>
-    <div id="codeContainer">
-        <pre><code class="language-c">
-            #include &lt;stdio.h&gt;
+    <div id="container">
+        <button onclick="toggleCode()">Show Code</button>
+        <div id="codeContainer">
+            <button class="back-btn" onclick="toggleCode()">Back</button>
+            <pre><code class="language-c">
+                #include &lt;stdio.h&gt;
 
-            // Function to calculate the sum of first n numbers
-            int sum(int n) {
-                if (n == 0)
+                // Function to calculate the sum of first n numbers
+                int sum(int n) {
+                    if (n == 0)
+                        return 0;
+                    return n + sum(n - 1);
+                }
+
+                // Function to calculate the product of first n numbers (factorial)
+                int factorial(int n) {
+                    if (n == 0)
+                        return 1;
+                    return n * factorial(n - 1);
+                }
+
+                // Function to calculate the sum of digits of a number
+                int sumOfDigits(int num) {
+                    if (num == 0)
+                        return 0;
+                    return (num % 10) + sumOfDigits(num / 10);
+                }
+
+                // Function to calculate the product of digits of a number
+                int productOfDigits(int num) {
+                    if (num == 0)
+                        return 1;
+                    return (num % 10) * productOfDigits(num / 10);
+                }
+
+                // Function to calculate power of a number n upto k times
+                int power(int n, int k) {
+                    if (k == 0)
+                        return 1;
+                    return n * power(n, k - 1);
+                }
+
+                int main() {
+                    int n, k;
+                    
+                    // Test cases
+                    printf("Sum of first n numbers: %d\n", sum(4));
+                    printf("Factorial of n: %d\n", factorial(4));
+                    printf("Sum of digits of a number: %d\n", sumOfDigits(1729));
+                    printf("Product of digits of a number: %d\n", productOfDigits(272));
+                    printf("Power of a number: %d\n", power(3, 4));
+                    
                     return 0;
-                return n + sum(n - 1);
-            }
-
-            // Function to calculate the product of first n numbers (factorial)
-            int factorial(int n) {
-                if (n == 0)
-                    return 1;
-                return n * factorial(n - 1);
-            }
-
-            // Function to calculate the sum of digits of a number
-            int sumOfDigits(int num) {
-                if (num == 0)
-                    return 0;
-                return (num % 10) + sumOfDigits(num / 10);
-            }
-
-            // Function to calculate the product of digits of a number
-            int productOfDigits(int num) {
-                if (num == 0)
-                    return 1;
-                return (num % 10) * productOfDigits(num / 10);
-            }
-
-            // Function to calculate power of a number n upto k times
-            int power(int n, int k) {
-                if (k == 0)
-                    return 1;
-                return n * power(n, k - 1);
-            }
-
-            int main() {
-                int n, k;
-                
-                // Test cases
-                printf("Sum of first n numbers: %d\n", sum(4));
-                printf("Factorial of n: %d\n", factorial(4));
-                printf("Sum of digits of a number: %d\n", sumOfDigits(1729));
-                printf("Product of digits of a number: %d\n", productOfDigits(272));
-                printf("Power of a number: %d\n", power(3, 4));
-                
-                return 0;
-            }
-        </code></pre>
+                }
+            </code></pre>
+        </div>
     </div>
     
     <script>
