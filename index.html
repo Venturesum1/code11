@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Code</title>
+    <style>
+        #codeContainer {
+            display: none;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="toggleCode()">Show Code</button>
+    <div id="codeContainer">
+        <pre><code class="language-c">
+            #include &lt;stdio.h&gt;
+
+            // Function to calculate the sum of first n numbers
+            int sum(int n) {
+                if (n == 0)
+                    return 0;
+                return n + sum(n - 1);
+            }
+
+            // Function to calculate the product of first n numbers (factorial)
+            int factorial(int n) {
+                if (n == 0)
+                    return 1;
+                return n * factorial(n - 1);
+            }
+
+            // Function to calculate the sum of digits of a number
+            int sumOfDigits(int num) {
+                if (num == 0)
+                    return 0;
+                return (num % 10) + sumOfDigits(num / 10);
+            }
+
+            // Function to calculate the product of digits of a number
+            int productOfDigits(int num) {
+                if (num == 0)
+                    return 1;
+                return (num % 10) * productOfDigits(num / 10);
+            }
+
+            // Function to calculate power of a number n upto k times
+            int power(int n, int k) {
+                if (k == 0)
+                    return 1;
+                return n * power(n, k - 1);
+            }
+
+            int main() {
+                int n, k;
+                
+                // Test cases
+                printf("Sum of first n numbers: %d\n", sum(4));
+                printf("Factorial of n: %d\n", factorial(4));
+                printf("Sum of digits of a number: %d\n", sumOfDigits(1729));
+                printf("Product of digits of a number: %d\n", productOfDigits(272));
+                printf("Power of a number: %d\n", power(3, 4));
+                
+                return 0;
+            }
+        </code></pre>
+    </div>
+    
+    <script>
+        function toggleCode() {
+            var codeContainer = document.getElementById("codeContainer");
+            if (codeContainer.style.display === "none") {
+                codeContainer.style.display = "block";
+            } else {
+                codeContainer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
